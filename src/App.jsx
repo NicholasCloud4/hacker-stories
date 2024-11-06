@@ -1,15 +1,13 @@
-
 // let title = "React"
 
 let welcome = {
     title: "React",
-    greeting: "Hey"
-}
+    greeting: "Hey",
+};
 
 function getTitle(title) {
     return title;
 }
-
 
 const list = [
     {
@@ -18,7 +16,7 @@ const list = [
         author: "Jordan Walke",
         num_comments: 3,
         points: 4,
-        objectID: 0
+        objectID: 0,
     },
     {
         title: "Redux",
@@ -26,30 +24,57 @@ const list = [
         author: "Dan Abramov, Andrew Clark",
         num_comments: 2,
         points: 5,
-        objectID: 1
+        objectID: 1,
+    },
+    {
+        title: "Svelte",
+        url: "https://svelte.dev/",
+        author: "Rich Harris",
+        num_comments: 3,
+        points: 4,
+        objectID: 2,
+    },
+    {
+        title: "Vue",
+        url: "https://vuejs.org/",
+        author: "Evan You",
+        num_comments: 3,
+        points: 4,
+        objectID: 3,
+    },
+    {
+        title: "Angular",
+        url: "https://angular.io/",
+        author: "Misko Hevery",
+        num_comments: 3,
+        points: 4,
+        objectID: 4,
     }
-]
-
-
+];
 
 function App() {
-
     return (
         <div>
-            <h1>Hello {getTitle("World")}</h1>
+            <h1>My Hacker Stories</h1>
 
-            <ul>
-                {list.map(function (item) {
-                    return <li key={item.objectID}>{item.title} </li>
-                })}
-            </ul>
-
-            <h1>{welcome.greeting} {welcome.title}</h1>
             <label htmlFor="search">Search:</label>
             <input id="search" type="text"></input>
-        </div>
 
-    )
+            <hr />
+            <ul>
+                {list.map(function (item) {
+                    return (
+                        <li key={item.objectID}>
+                            <span><a href={item.url}>{item.title}</a></span>
+                            <span>{item.author}</span>
+                            <span>{item.num_comments}</span>
+                            <span>{item.points}</span>
+                        </li>
+                    );
+                })}
+            </ul>
+        </div>
+    );
 }
 
-export default App
+export default App;
