@@ -61,10 +61,30 @@ const App = () => {
 
 
 const Search = () => {
+
+    function handleChange(event) {
+        // synthetic event
+        console.log(event);
+        //value of target (input of the HTML element)
+        console.log(event.target.value);
+    }
+
+    function handleFocus(event) {
+        console.log(event.target.style.background = 'lightgrey')
+    }
+
+    function handleBlur(event) {
+        // synthetic event
+        console.log(event);
+        //value of target (input of the HTML element)
+        console.log(event.target.style.background = '');
+    }
+
+
     return (
         <>
             <label htmlFor="search">Search:</label>
-            <input id="search" type="text"></input>
+            <input id="search" type="text" onChange={handleChange} onFocus={handleFocus} onBlur={handleBlur}></input>
         </>
     )
 
