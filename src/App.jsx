@@ -1,3 +1,5 @@
+import * as React from 'react';
+
 const App = () => {
     const stories = [
         {
@@ -41,6 +43,7 @@ const App = () => {
             objectID: 4,
         }
     ];
+    console.log("APP RENDERS");
 
     return (
         <div>
@@ -59,14 +62,21 @@ const App = () => {
     );
 }
 
-
 const Search = () => {
+    console.log("SEARCH RENDERS");
+    const [searchTerm, setSearchTerm] = React.useState('');
+
 
     function handleChange(event) {
+
         // synthetic event
         console.log(event);
         //value of target (input of the HTML element)
         console.log(event.target.value);
+
+        setSearchTerm(event.target.value);
+
+
     }
 
     function handleFocus(event) {
@@ -85,12 +95,16 @@ const Search = () => {
         <>
             <label htmlFor="search">Search:</label>
             <input id="search" type="text" onChange={handleChange} onFocus={handleFocus} onBlur={handleBlur}></input>
+
+            <p>{searchTerm}</p>
+
         </>
     )
 
 }
 
 const List = (props) => {
+    console.log("LIST RENDERS");
     return (
         <ul>
             {props.list.map((item) => {
@@ -102,6 +116,7 @@ const List = (props) => {
 }
 
 function Item(props) {
+    console.log("ITEM RENDERS");
     return (
         <li key={props.item.objectID}>
             <span><a href={props.item.url}>{props.item.title}</a></span>
