@@ -1,47 +1,47 @@
-const list = [
-    {
-        title: "React",
-        url: "https://reactjs.org/",
-        author: "Jordan Walke",
-        num_comments: 3,
-        points: 4,
-        objectID: 0,
-    },
-    {
-        title: "Redux",
-        url: "https://redux.js.org/",
-        author: "Dan Abramov, Andrew Clark",
-        num_comments: 2,
-        points: 5,
-        objectID: 1,
-    },
-    {
-        title: "Svelte",
-        url: "https://svelte.dev/",
-        author: "Rich Harris",
-        num_comments: 3,
-        points: 4,
-        objectID: 2,
-    },
-    {
-        title: "Vue",
-        url: "https://vuejs.org/",
-        author: "Evan You",
-        num_comments: 3,
-        points: 4,
-        objectID: 3,
-    },
-    {
-        title: "Angular",
-        url: "https://angular.io/",
-        author: "Misko Hevery",
-        num_comments: 3,
-        points: 4,
-        objectID: 4,
-    }
-];
-
 const App = () => {
+    const stories = [
+        {
+            title: "React",
+            url: "https://reactjs.org/",
+            author: "Jordan Walke",
+            num_comments: 3,
+            points: 4,
+            objectID: 0,
+        },
+        {
+            title: "Redux",
+            url: "https://redux.js.org/",
+            author: "Dan Abramov, Andrew Clark",
+            num_comments: 2,
+            points: 5,
+            objectID: 1,
+        },
+        {
+            title: "Svelte",
+            url: "https://svelte.dev/",
+            author: "Rich Harris",
+            num_comments: 3,
+            points: 4,
+            objectID: 2,
+        },
+        {
+            title: "Vue",
+            url: "https://vuejs.org/",
+            author: "Evan You",
+            num_comments: 3,
+            points: 4,
+            objectID: 3,
+        },
+        {
+            title: "Angular",
+            url: "https://angular.io/",
+            author: "Misko Hevery",
+            num_comments: 3,
+            points: 4,
+            objectID: 4,
+        }
+    ];
+
     return (
         <div>
             <h1>My Hacker Stories</h1>
@@ -50,10 +50,10 @@ const App = () => {
 
             <hr />
 
-            <List />
+            <List list={stories} />
 
-            <hr />
-            <List />
+            {/* <hr />
+            <List /> */}
 
         </div>
     );
@@ -90,22 +90,26 @@ const Search = () => {
 
 }
 
-const List = () => {
+const List = (props) => {
     return (
         <ul>
-            {list.map((item) => {
-                return (
-                    <li key={item.objectID}>
-                        <span><a href={item.url}>{item.title}</a></span>
-                        <span>{item.author}</span>
-                        <span>{item.num_comments}</span>
-                        <span>{item.points}</span>
-                    </li>
-                );
+            {props.list.map((item) => {
+                return <Item key={item.objectID} item={item} />
             })}
         </ul>
     )
 
+}
+
+function Item(props) {
+    return (
+        <li key={props.item.objectID}>
+            <span><a href={props.item.url}>{props.item.title}</a></span>
+            <span>{props.item.author}</span>
+            <span>{props.item.num_comments}</span>
+            <span>{props.item.points}</span>
+        </li>
+    )
 }
 
 export default App;
